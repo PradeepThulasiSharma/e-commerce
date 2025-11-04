@@ -1,0 +1,39 @@
+# Node modules
+node_modules/
+back-end/node_modules/
+front-end/node_modules/
+
+# Build outputs
+dist/
+build/
+front-end/dist/
+front-end/build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+back-end/.env
+front-end/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Coverage and test files
+coverage/
+*.log
+*.tmp
+
+# TypeScript
+*.tsbuildinfo
