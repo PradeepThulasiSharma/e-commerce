@@ -1,5 +1,6 @@
 // swagger/swaggerDef.js
 const userSchemas = require('./schemas/user');
+
 module.exports = {
   openapi: '3.0.0',
   info: {
@@ -10,9 +11,20 @@ module.exports = {
     { url: 'http://localhost:3000' },
   ],
   components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+    },
     schemas: {
       ...userSchemas,
-      // Add other schemas here
     },
   },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
 };

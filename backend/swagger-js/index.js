@@ -1,4 +1,4 @@
-// Main app entry point
+// index.js
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -7,7 +7,6 @@ const path = require('path');
 
 const swaggerDefinition = require('./swagger/swaggerDef');
 const userRoutes = require('./routes/userRoutes');
-// const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 app.use(express.json());
@@ -21,6 +20,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Initialize OpenAPI Validator
 app.use(
   OpenApiValidator.middleware({
     apiSpec: swaggerSpec,
@@ -29,9 +29,8 @@ app.use(
   })
 );
 
-// Modular route mounting
+// Routes
 app.use(userRoutes);
-// app.use(productRoutes);
 
 // Error handler
 app.use((err, req, res, next) => {
